@@ -111,5 +111,7 @@ int main()
         break;
     }
 
+    adatb.close();
+
     return 0;
 }
