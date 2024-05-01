@@ -10,6 +10,7 @@ int main() {
     ifstream file("tranzakciok.txt");
 
     map<vector<string>, int> kombinaciok;
+    int totalTransactions = 0;
 
     string sor;
     while (getline(file, sor)) {
@@ -23,16 +24,18 @@ int main() {
         sort(elemek.begin(), elemek.end());
 
         kombinaciok[elemek]++;
+        totalTransactions++;
     }
 
     for (const auto& parok : kombinaciok) {
         const vector<string>& elemek = parok.first;
         int count = parok.second;
+        double appearanceRatio = (static_cast<double>(count) / totalTransactions) * 100;
 
         for (const string& elem : elemek) {
             cout << elem << " ";
         }
-        cout << ": " << count << endl;
+        cout << ": " << appearanceRatio << "%" << endl;
     }
 
     return 0;
